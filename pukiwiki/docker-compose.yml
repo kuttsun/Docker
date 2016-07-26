@@ -1,0 +1,12 @@
+data:
+  image: busybox
+  volumes:
+    - /data
+
+pukiwiki:
+  image: bakudankun/pukiwiki
+  volumes_from:
+    - data
+  ports:
+    - "9020:80"
+  restart: always

@@ -1,0 +1,18 @@
+# let's chatを動作させるためには
+#  - nodejs
+#  - mongodb
+#  - python
+# が必要となる。
+# sdelements/lets-chat のイメージを使用すると
+# あとはデータベースさえ用意すれば動く
+
+lets-chat:
+  image: sdelements/lets-chat
+  links:
+    - mongo
+  ports:
+    - 9010:8080
+    - 5222:5222
+
+mongo:
+  image: mongo:latest

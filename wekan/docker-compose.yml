@@ -1,0 +1,21 @@
+data:
+  image: busybox
+  volumes:
+    - /data/db
+
+mongo:
+  image: mongo
+  volumes_from:
+    - data
+  restart: always
+
+wekan:
+  image: mquandalle/wekan
+  environment:
+    MONGO_URL: mongodb://db
+    ROOT_URL: http://localhost
+  links:
+    - mongo:db
+  ports:
+    - "8080:80"
+  restart: always
