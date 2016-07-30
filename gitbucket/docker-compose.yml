@@ -3,3 +3,4 @@ gitbucket:
   ports:
     - "9000:8080" # 通常のポート
     - "29418:29418" # ssh用のポート
+  restart: always

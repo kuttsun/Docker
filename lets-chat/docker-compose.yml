@@ -13,6 +13,8 @@ lets-chat:
   ports:
     - 9010:8080
     - 5222:5222
+  restart: always
 
 mongo:
   image: mongo:latest
+  restart: always
