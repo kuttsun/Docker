@@ -1,5 +1,35 @@
-redmine:
-  image: redmine
-  ports:
-    - "3000:3000"
-  restart: always
+version: '3.1'
+services:
+  redmine:
+    image: redmine:3.4.5
+    container_name: redmine
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      REDMINE_DB_MYSQL: mysql
+      REDMINE_DB_PASSWORD: example
+      http_proxy: http://example.com:8080
+      https_proxy: http://example.com:8080
+    volumes:
+      - files:/usr/src/redmine/files
+    networks:
+      - common
+  mysql:
+    image: mysql
+    container_name: redmine-mysql
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - common
+networks:
+  common:
+    external: true
+volumes:
+  files:
+  mysql:
