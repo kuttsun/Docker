@@ -1,7 +1,10 @@
-gitlab-runner:
-  image: gitlab/gitlab-runner
-  container_name: gitlab-runner
-  restart: always
+# Docker for Windows ‚Å‚Í“®ì‚µ‚È‚¢‚Ì‚Å’ˆÓ
+version: '2'
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner
+    container_name: gitlab-runner
+    restart: always
   volumes:
     - /srv/gitlab-runner/config:/etc/gitlab-runner
     - /var/run/docker.sock:/var/run/docker.sock
