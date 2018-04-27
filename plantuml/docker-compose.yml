@@ -1,0 +1,13 @@
+version: '2'
+services:
+  plantuml-server:
+    image: plantuml/plantuml-server
+    container_name: plantuml-server
+    restart: always
+    ports:
+      - "13080:8080"
+    networks:
+      - common
+networks:
+  common:
+    external: true
